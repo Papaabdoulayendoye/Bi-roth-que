@@ -1,48 +1,58 @@
 <template>
-<div class="beer-list">
-<h2>Liste des bières ({{ beers.length }})</h2>
+    <div class="beer-list">
+    <h2>Liste des bières ({{ beerCount }})</h2>
 
-<div class="table-container">
-    <table>
-    <thead>
-        <tr>
-        <th @click="sortBy('id')">ID <span v-if="sortColumn === 'id'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
-        <th @click="sortBy('name')">Nom <span v-if="sortColumn === 'name'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
-        <th>Commentaire</th>
-        <th @click="sortBy('priceHT')">Prix HT <span v-if="sortColumn === 'priceHT'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
-        <th>Prix TTC</th>
-        <th @click="sortBy('alcoholDegree')">Degré <span v-if="sortColumn === 'alcoholDegree'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
-        <th>Type</th>
-        <th>Propriétaire</th>
-        <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="beer in sortedBeers" :key="beer.id">
-        <td>{{ beer.id }}</td>
-        <td>{{ formatName(beer.name) }}</td>
-        <td>{{ beer.comment }}</td>
-        <td>{{ beer.priceHT.toFixed(2) }} €</td>
-        <td>{{ beer.priceTTC ? beer.priceTTC.toFixed(2) : (beer.priceHT * 1.20).toFixed(2) }} €</td>
-        <td>{{ beer.alcoholDegree }} %</td>
-        <td>{{ beer.type }}</td>
-        <td>{{ beer.owner }}</td>
-        <td class="actions">
-            <button @click="$emit('edit-beer', beer)">✏️</button>
-            <button @click="$emit('delete-beer', beer.id)">🗑️</button>
-        </td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-</div>
+    <div v-if="beerCount > 0" class="table-container">
+        <table>
+<thead>
+    <tr>
+    <th @click="sortBy('id')">ID <span v-if="sortColumn === 'id'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
+    <th @click="sortBy('name')">Nom <span v-if="sortColumn === 'name'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
+    <th>Commentaire</th>
+    <th @click="sortBy('priceHT')">Prix HT <span v-if="sortColumn === 'priceHT'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
+    <th>Prix TTC</th>
+    <th @click="sortBy('alcoholDegree')">Degré <span v-if="sortColumn === 'alcoholDegree'">{{ sortDirection === 'asc' ? '↑' : '↓' }}</span></th>
+    <th>Type</th>
+    <th>Propriétaire</th>
+    <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    <tr v-for="beer in sortedBeers" :key="beer.id">
+    <td>{{ beer.id }}</td>
+    <td>{{ formatName(beer.name) }}</td>
+    <td>{{ beer.comment }}</td>
+    <td>{{ beer.priceHT.toFixed(2) }} €</td>
+    <td>{{ beer.priceTTC ? beer.priceTTC.toFixed(2) : (beer.priceHT * 1.20).toFixed(2) }} €</td>
+    <td>{{ beer.alcoholDegree }} %</td>
+    <td>{{ beer.type }}</td>
+    <td>{{ beer.owner }}</td>
+    <td class="actions">
+        <button @click="$emit('edit-beer', beer)">✏️</button>
+        <button @click="$emit('delete-beer', beer.id)">🗑️</button>
+    </td>
+    </tr>
+</tbody>
+</table>
+    </div>
+    
+    <div v-else class="empty-message">
+        Aucune bière disponible.
+    </div>
+    </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
 
-const props = defineProps(['beers']);
+const props = defineProps({
+    beers: {
+    type: Array,
+    default: () => [],
+    }
+});
 const emit = defineEmits(['edit-beer', 'delete-beer']);
+const beerCount = computed(() => props.beers?.length || 0);
 
 const sortColumn = ref('id');
 const sortDirection = ref('asc');
@@ -72,7 +82,7 @@ return name.split(' ')
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .beer-list {
 margin-top: 30px;
 }
@@ -124,4 +134,11 @@ padding: 5px;
 button:hover {
 color: #3498db;
 }
+.empty-message {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
 </style>
+

@@ -1,4 +1,11 @@
-<template>
+<!-- <template>
+    <div>
+    <nav>
+      <router-link to="/">Accueil</router-link>
+      <router-link to="/about">À propos</router-link>
+    </nav>
+    <router-view />
+  </div>
   <div class="app">
     <h1>Ma Biérothèque</h1>
     <BeerForm @add-beer="addBeer" @update-beer="updateBeer" :editing-beer="editingBeer" />
@@ -55,5 +62,58 @@ const deleteBeer = (id) => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+}
+</style> -->
+
+
+<!-- <template>
+  <Header />
+  <router-view />
+  <Footer />
+</template>
+
+<script setup>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+</script>
+
+<style lang="scss" scoped>
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+</style> -->
+
+
+
+<template>
+  <div class="app">
+    <Header />
+    <main>
+      <router-view :key="$route.fullPath" />
+    </main>
+    <Footer />
+  </div>
+</template>
+
+<script setup>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+</script>
+
+<style lang="scss">
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 </style>

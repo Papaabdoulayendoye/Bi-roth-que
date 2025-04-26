@@ -112,127 +112,138 @@ watch(
 const priceTTC = computed(() => formData.value.priceHT * 1.2);
 
 const validateForm = () => {
-  let valid = true;
-  errors.value = {};
+    let valid = true;
+    errors.value = {};
 
-  if (!formData.value.name) {
-    errors.value.name = "Le nom est obligatoire";
-    valid = false;
-  }
+    if (!formData.value.name) 
+{
+        errors.value.name = "Le nom est obligatoire";
+        valid = false;
+}
 
-  if (formData.value.priceHT <= 0) {
+if (formData.value.priceHT <= 0) {
     errors.value.priceHT = "Le prix doit être positif";
     valid = false;
-  }
+}
 
-  if (
+if (
     formData.value.alcoholDegree < 0 ||
     formData.value.alcoholDegree > 70
-  ) {
+) {
     errors.value.alcoholDegree = "Le degré doit être entre 0 et 70";
     valid = false;
-  }
+}
 
-  return valid;
+return valid;
 };
 
 const handleSubmit = () => {
-  if (!validateForm()) return;
-
-  const beerData = { ...formData.value };
-  beerData.priceTTC = priceTTC.value;
-
-  if (beerData.id) {
-    emit("update-beer", beerData);
-  } else {
-    emit("add-beer", beerData);
+  console.log('Submit triggered');
+  if (!validateForm()) {
+    console.log('Validation failed');
+    return;
   }
 
-  resetForm();
+  const beerData = { ...formData.value };
+  console.log('Submitting beer:', beerData);
+  
+  if (beerData.id) {
+    console.log('Updating beer');
+    emit('update-beer', beerData);
+  } else {
+    console.log('Adding new beer');
+    emit('add-beer', beerData);
+  }
 };
 
 const cancelEdit = () => {
-  emit("update-beer", null);
-  resetForm();
+    emit("update-beer", null);
+    resetForm();
 };
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
 .beer-form {
-background: #f9f9f9;
-padding: 20px;
-border-radius: 8px;
-margin-bottom: 30px;
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+form {
+    display: flex; 
+    flex-direction: column;
+    /* margin: 0 auto; */
+    padding: 20px;
 }
 
 h2 {
-margin-top: 0;
-color: #2c3e50;
+    margin-top: 0;
+    color: #2c3e50;
 }
 
 .form-group {
-margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 label {
-display: block;
-margin-bottom: 5px;
-font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input,
 textarea,
 select {
-width: 100%;
-padding: 8px;
-border: 1px solid #ddd;
-border-radius: 4px;
-box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 textarea {
-min-height: 80px;
+    min-height: 80px;
 }
 
 .error {
-color: #e74c3c;
-font-size: 0.9em;
-display: block;
-margin-top: 5px;
+    color: #e74c3c;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 5px;
 }
 
 .ttc {
-margin-top: 5px;
-font-style: italic;
-color: #7f8c8d;
+    margin-top: 5px;
+    font-style: italic;
+    color: #7f8c8d;
 }
 
 .actions {
-display: flex;
-gap: 10px;
-margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 button {
-padding: 10px 15px;
-background: #3498db;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background 0.3s;
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 button:hover {
-background: #2980b9;
+    background: #2980b9;
 }
 
 button[type="button"] {
-background: #95a5a6;
+    background: #95a5a6;
 }
 
 button[type="button"]:hover {
-background: #7f8c8d;
+    background: #7f8c8d;
 }
 </style>
