@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Back-end pour le projet Bierotheque",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/romain.poiseau/back-bierotheque.git"
+  },
+  "author": "Romain Poiseau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/romain.poiseau/back-bierotheque/issues"
+  },
+  "homepage": "https://gitlab.com/romain.poiseau/back-bierotheque#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
