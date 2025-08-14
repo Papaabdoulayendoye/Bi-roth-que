@@ -52,9 +52,10 @@ Exemples :
 ## ⚙️ Installation
 
 1. **Cloner le projet**
-bash
+```bash
 git clone https://github.com/votre-nom-d-utilisateur/projet-vuejs-exam.git
 bash
 npm install
 bash
 npm run serve
+```
