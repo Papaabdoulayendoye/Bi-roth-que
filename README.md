@@ -12,10 +12,13 @@ Un petit projet, mais pensé avec ❤️ pour être clair, fluide et agréable �
 ---
 
 ## 📂 Structure du projet
-src/
+src/ <br />
 ├── api/ Communication avec l'API <br />
+
 ├── components/ Composants réutilisables (BookMenu, Footer…) <br />
+
 ├── router/ Gestion de la navigation <br />
+
 └── views/ Pages principales (BookForm, BookList, Home) <br />
 ---
 
