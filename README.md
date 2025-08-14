@@ -1,5 +1,60 @@
-# Vue 3 + Vite
+# 📚 Application de Gestion de Livres (Vue.js)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+![Vue.js](https://img.shields.io/badge/Vue.js-3.x-brightgreen?logo=vue.js)
+![Licence](https://img.shields.io/badge/licence-MIT-blue)
+![Statut](https://img.shields.io/badge/statut-Actif-success)
+![Type](https://img.shields.io/badge/Type-Examen-orange)
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Bienvenue dans **votre bibliothèque numérique** !  
+Cette application Vue.js permet de **créer**, **afficher** et **naviguer** entre vos livres préférés.  
+Un petit projet, mais pensé avec ❤️ pour être clair, fluide et agréable à utiliser.
+
+---
+
+## 📂 Structure du projet
+
+
+---
+
+## ✨ Fonctionnalités
+
+### 🖥 Général
+- Footer affiché sur toutes les pages enfants de `Home`
+- Navigation rapide entre liste et formulaire
+
+### 📋 Liste des livres
+- Affichage clair et lisible des titres
+- Tableau des livres affiché dès l’arrivée sur la page
+
+### 📝 Formulaire
+- Formulaire complet avec tous les champs nécessaires
+- Bouton **Annuler** → Retour direct à la liste
+- Choix de la couleur de couverture : `ROUGE`, `ROSE`, `BLEU`
+- Redirection automatique après création réussie
+- Validation stricte :
+  - Champs obligatoires
+  - Prix ≤ 49 €
+  - Messages d’erreurs clairs
+
+---
+
+## 📸 Aperçu
+
+_(Ajoutez ici vos captures d’écran pour illustrer l’interface)_
+
+Exemples :
+1. **Page d’accueil**
+2. **Liste des livres**
+3. **Formulaire de création**
+
+---
+
+## ⚙️ Installation
+
+1. **Cloner le projet**
+bash
+git clone https://github.com/votre-nom-d-utilisateur/projet-vuejs-exam.git
+bash
+npm install
+bash
+npm run serve
