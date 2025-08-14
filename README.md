@@ -12,8 +12,11 @@ Un petit projet, mais pensé avec ❤️ pour être clair, fluide et agréable �
 ---
 
 ## 📂 Structure du projet
-
-
+src/
+├── api/ # Communication avec l'API
+├── components/ # Composants réutilisables (BookMenu, Footer…)
+├── router/ # Gestion de la navigation
+└── views/ # Pages principales (BookForm, BookList, Home)
 ---
 
 ## ✨ Fonctionnalités
@@ -37,16 +40,15 @@ Un petit projet, mais pensé avec ❤️ pour être clair, fluide et agréable �
   - Messages d’erreurs clairs
 
 ---
-
-```
+<!--
 ## 📸 Aperçu
 
 Exemples :
 1. **Page d’accueil**
 2. **Liste des livres**
 3. **Formulaire de création**
-
-```---
+-->
+---
 
 ## ⚙️ Installation
 
