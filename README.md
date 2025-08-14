@@ -38,16 +38,15 @@ Un petit projet, mais pensé avec ❤️ pour être clair, fluide et agréable �
 
 ---
 
+```
 ## 📸 Aperçu
-
-_(Ajoutez ici vos captures d’écran pour illustrer l’interface)_
 
 Exemples :
 1. **Page d’accueil**
 2. **Liste des livres**
 3. **Formulaire de création**
 
----
+```---
 
 ## ⚙️ Installation
 
